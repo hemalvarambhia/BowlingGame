@@ -14,15 +14,19 @@ public class BowlingGame {
 		int score = 0;
 		int go = 0;
 		for(int frame = 0; frame < 10; frame++){
-			if(rolls[go] + rolls[go + 1] == 10){
+			if(isASpare(go)){
 				score += (10 + rolls[go + 2]);
 			}else{
-				score += rolls[go] + rolls[go + 1];
+				score += (rolls[go] + rolls[go + 1]);
 			}
 			go += 2;
 		}
 		
 		return score;
+	}
+	
+	private boolean isASpare(int go){
+		return rolls[go] + rolls[go + 1] == 10;
 	}
 
 }
