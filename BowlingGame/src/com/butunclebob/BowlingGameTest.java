@@ -26,9 +26,18 @@ public class BowlingGameTest {
 		assertThat(g.score(), equalTo(0));
 	}
 	
+	@Test
+	public void hittingOnlyOnePinInEveryFrame(){
+		g = new BowlingGame();
+		
+		rollMany(20, 1);
+		
+		assertThat(g.score(), equalTo(20));
+	}
+	
 	private void rollMany(int n, int pins){
 		for(int i = 0; i < 20; i++){
-			g.roll(0);
+			g.roll(pins);
 		}
 	}
 
