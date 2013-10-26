@@ -41,6 +41,15 @@ public class BowlingGameTest {
 		assertThat(g.score(), equalTo(16));
 	}
 	
+	@Test
+	public void gettingAStrike(){
+		g.roll(10);
+		g.roll(3);
+		g.roll(6);
+		rollMany(17, 0);
+		assertThat(g.score(), equalTo(28));
+	}
+	
 	private void rollMany(int n, int pins){
 		for(int i = 0; i < n; i++){
 			g.roll(pins);
