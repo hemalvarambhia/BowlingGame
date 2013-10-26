@@ -14,12 +14,12 @@ public class BowlingGame {
 		int score = 0;
 		int go = 0;
 		for(int frame = 0; frame < 10; frame++){
-			if(rolls[go] == 10){
-				score += (10 + rolls[go + 1] + rolls[go + 2]);
+			if(gotAStrike(go)){
+				score += (10 + strikeBonusFor(go));
 				go++;
 			}else {
-				if(isASpare(go)){
-					score += (10 + rolls[go + 2]);
+				if(gotASpare(go)){
+					score += (10 + spareBonusFor(go));
 				}else{
 					score += (rolls[go] + rolls[go + 1]);
 				}
@@ -30,8 +30,20 @@ public class BowlingGame {
 		return score;
 	}
 	
-	private boolean isASpare(int go){
+	private boolean gotAStrike(int go){
+		return rolls[go] == 10;
+	}
+	
+	private int strikeBonusFor(int go){
+		return rolls[go + 1] + rolls[go + 2];
+	}
+	
+	private boolean gotASpare(int go){
 		return rolls[go] + rolls[go + 1] == 10;
 	}
 
+	private int spareBonusFor(int go){
+		return rolls[go + 2];
+	}
+	
 }
