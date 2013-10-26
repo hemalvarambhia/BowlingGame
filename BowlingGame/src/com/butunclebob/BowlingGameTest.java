@@ -34,8 +34,7 @@ public class BowlingGameTest {
 	
 	@Test
 	public void gettingASpare(){
-		g.roll(5);
-		g.roll(5); //got a spare
+		rollASpare();
 		g.roll(3);
 		rollMany(17, 0);
 		
@@ -46,6 +45,11 @@ public class BowlingGameTest {
 		for(int i = 0; i < n; i++){
 			g.roll(pins);
 		}
+	}
+	
+	private void rollASpare(){
+		g.roll(5);
+		g.roll(5);
 	}
 
 }
