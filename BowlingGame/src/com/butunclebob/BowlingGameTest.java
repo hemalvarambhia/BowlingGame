@@ -50,6 +50,12 @@ public class BowlingGameTest {
 		assertThat(g.score(), equalTo(28));
 	}
 	
+	@Test
+	public void perfectGame(){
+		rollMany(12, 10);
+		assertThat(g.score(), equalTo(300));
+	}
+	
 	private void rollMany(int n, int pins){
 		for(int i = 0; i < n; i++){
 			g.roll(pins);
