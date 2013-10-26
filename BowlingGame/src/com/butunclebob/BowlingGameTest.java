@@ -11,6 +11,7 @@ public class BowlingGameTest {
 	private BowlingGame g;
 	@Before
 	public void setUp() throws Exception {
+		g = new BowlingGame();	
 	}
 
 	@After
@@ -19,8 +20,6 @@ public class BowlingGameTest {
 
 	@Test
 	public void gutterGame() {
-		g = new BowlingGame();
-		
 		rollMany(20, 0);
 		
 		assertThat(g.score(), equalTo(0));
@@ -28,15 +27,23 @@ public class BowlingGameTest {
 	
 	@Test
 	public void hittingOnlyOnePinInEveryFrame(){
-		g = new BowlingGame();
-		
 		rollMany(20, 1);
 		
 		assertThat(g.score(), equalTo(20));
 	}
 	
+	@Test
+	public void gettingASpare(){
+		g.roll(5);
+		g.roll(5); //got a spare
+		g.roll(3);
+		rollMany(17, 0);
+		
+		assertThat(g.score(), equalTo(16));
+	}
+	
 	private void rollMany(int n, int pins){
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < n; i++){
 			g.roll(pins);
 		}
 	}
